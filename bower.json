@@ -1,0 +1,27 @@
+{
+  "name": "material-kit-react",
+  "homepage": "https://github.com/ebonynon",
+  "authors": [
+    "xe-non"
+  ],
+  "description": "Website based on Material Design",
+  "main": "dist/index.js",
+  "keywords": [
+    "material",
+    "design",
+    "material-ui",
+    "google",
+    "twitter"
+  ],
+  "license": "MIT License",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "Remove",
+    "Documentation"
+  ],
+  "private": true
+}
