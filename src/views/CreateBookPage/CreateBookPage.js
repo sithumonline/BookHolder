@@ -3,23 +3,17 @@ import React from "react";
 import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
 // @material-ui/icons
 
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-//import GridContainer from "components/Grid/GridContainer.js";
-//import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-//import Parallax from "components/Parallax/Parallax.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-//import SectionAboutUs from "./Sections/AboutUsSection.js";
-//import SectionCreateBook from "./Sections/CreateBookSection";
-import SectionLogin from "../CreateBookPage/Sections/SectionLogin.js";
+import SectionCreateBook from "../CreateBookPage/Sections/CreateBookSection.js";
 
 const dashboardRoutes = [];
 
@@ -33,7 +27,7 @@ export default function CreateBookPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="KallathoniXY"
+        brand="Book Holder"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -49,8 +43,7 @@ export default function CreateBookPage(props) {
         )}
       >
         <div className={classes.container}>
-          {/* <SectionCreateBook /> */}
-          <SectionLogin />
+          <SectionCreateBook />
         </div>
       </div>
       <Footer />
