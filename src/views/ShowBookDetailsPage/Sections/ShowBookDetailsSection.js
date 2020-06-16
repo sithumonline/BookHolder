@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -31,7 +32,7 @@ export default class SectionShowBookDetails extends Component {
   componentDidMount() {
     console.log("Print id: " + this.props.match.params.id);
     axios
-      .get("https://mern-00.now.sh/api/books/" + this.props.match.params.id)
+      .get("https://mern-01.now.sh/api/books/" + this.props.match.params.id)
       .then((res) => {
         console.log("Print-showBookDetails-API-response: " + res.data);
         this.setState({
@@ -57,18 +58,18 @@ export default class SectionShowBookDetails extends Component {
     const Body = () => {
       const classes = useStyles();
       const book = this.state.book;
-      function createData( X, Y) {
-        return { X, Y};
+      function createData(X, Y) {
+        return { X, Y };
       }
-    
-    const rows = [
-      createData("Title", book.title),
-      createData("Author", book.author),
-      createData("ISBN", book.isbn),
-      createData("Publisher", book.publisher),
-      createData("Published Date", book.published_date),
-      createData("Description", book.description),
-    ];
+
+      const rows = [
+        createData("Title", book.title),
+        createData("Author", book.author),
+        createData("ISBN", book.isbn),
+        createData("Publisher", book.publisher),
+        createData("Published Date", book.published_date),
+        createData("Description", book.description),
+      ];
       return (
         <div className={classes.section}>
           <div className={classes.container}>
@@ -95,6 +96,16 @@ export default class SectionShowBookDetails extends Component {
                     </TableBody>
                   </Table>
                 </TableContainer>
+              </GridItem>
+              <GridItem>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="small"
+                  onClick={this.onDeleteClick.bind(this,book._id)}
+                >
+                  Delete Book
+                </Button>
               </GridItem>
             </GridContainer>
           </div>
