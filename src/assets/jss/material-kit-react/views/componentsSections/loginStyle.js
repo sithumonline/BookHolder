@@ -1,6 +1,6 @@
 import { container } from "assets/jss/material-kit-react.js";
 
-import image from "assets/img/imagebackg.jpeg";
+import image from "assets/img/photo-150.jpeg";
 
 const loginStyle = {
   section: {
@@ -9,7 +9,7 @@ const loginStyle = {
     overflow: "hidden",
     padding: "70px 0",
     backgroundPosition: "top center",
-    backgroundSize: "cover",
+    //backgroundSize: "cover",
     margin: "0",
     border: "0",
     display: "flex",
