@@ -17,8 +17,7 @@ import Parallax from "components/Parallax/Parallax.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-//import SectionAboutUs from "./Sections/AboutUsSection.js";
-import SectionShowBookList from "./Sections/ShowBookListSection"
+import SectionShowBookList from "./Sections/ShowBookListSection";
 
 const dashboardRoutes = [];
 
@@ -32,7 +31,7 @@ export default function MainPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="KallathoniXY"
+        brand="Book Holder"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -41,16 +40,17 @@ export default function MainPage(props) {
         }}
         {...rest}
       />
-      <Parallax filter image={require("assets/img/og-js-01.png")}>
+      <Parallax filter image={require("assets/img/imagebackg.jpeg")}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
-              <h1 className={classes.title}>Your Story Starts With Us.</h1>
+              <h1 className={classes.title}>We Keep Your Book.</h1>
               <h4>
-                Every landing page needs a small description after the big bold
-                title, that{"'"}s why we added this text here. Add here all the
-                information that can make you or your product create the first
-                impression.
+                “Sometimes, you read a book and it fills you with this weird
+                evangelical zeal, and you become convinced that the shattered
+                world will never be put back together unless and until all
+                living humans read the book.” ― <i>John Green, The Fault in Our
+                Stars</i>
               </h4>
               <br />
             </GridItem>
@@ -60,11 +60,10 @@ export default function MainPage(props) {
       <div
         className={classNames(
           classes.main
-          //classes.mainRaised -- for boder 
+          //classes.mainRaised -- for boder
         )}
       >
         <div className={classes.container}>
-          {/* <SectionAboutUs /> */}
           <SectionShowBookList />
         </div>
       </div>
