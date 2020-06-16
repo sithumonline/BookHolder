@@ -21,6 +21,7 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 //import SectionAboutUs from "./Sections/AboutUsSection.js";
 //import SectionCreateBook from "./Sections/CreateBookSection";
 import SectionShowBookDetails from "./Sections/ShowBookDetailsSection.js";
+import SectionUpdateBookInfo from "./Sections/UpdateBookInfoSection"
 
 const dashboardRoutes = [];
 
@@ -53,6 +54,7 @@ export default function ShowBookDetailsPage(props) {
           <Router>
             <div>
               <Route path="/show-book/:id" component={SectionShowBookDetails} />
+              <Route path='/edit-book/:id' component={SectionUpdateBookInfo} />
             </div>
           </Router>
         </div>

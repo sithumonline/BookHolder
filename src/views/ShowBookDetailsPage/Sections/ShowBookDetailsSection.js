@@ -98,11 +98,20 @@ export default class SectionShowBookDetails extends Component {
                 </TableContainer>
               </GridItem>
               <GridItem>
+                <Link to={`/edit-book/${book._id}`}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                  >
+                    Edit Book
+                  </Button>
+                </Link>
                 <Button
                   variant="contained"
                   color="secondary"
                   size="small"
-                  onClick={this.onDeleteClick.bind(this,book._id)}
+                  onClick={this.onDeleteClick.bind(this, book._id)}
                 >
                   Delete Book
                 </Button>
