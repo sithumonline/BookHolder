@@ -10,16 +10,11 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-//import GridContainer from "components/Grid/GridContainer.js";
-//import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-//import Parallax from "components/Parallax/Parallax.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-//import SectionAboutUs from "./Sections/AboutUsSection.js";
-//import SectionCreateBook from "./Sections/CreateBookSection";
 import SectionShowBookDetails from "./Sections/ShowBookDetailsSection.js";
 import SectionUpdateBookInfo from "./Sections/UpdateBookInfoSection"
 
