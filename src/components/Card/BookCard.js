@@ -58,29 +58,29 @@ export default function BookCard(props) {
   return (
     <div className={classes.root}>
       <Grid item xs={12} lg={12} className={classes.img}>
-        <Card className={classes.john}>
-          <h2 className={classes.title}>
-            <Link to={`/show-book/${book._id}`}>{book.title}</Link>
-          </h2>
-          <CardActionArea className={classes.flex}>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              image={image}
-              title="Contemplative Reptile"
-              style={{ maxHeight: 540, maxWidth: 540 }}
-            />
-            <CardContent>
-              <Typography variant="h5" component="p" className={classes.txt}>
-                {book.description}
-              </Typography>
-              <br></br>
-              <Typography gutterBottom variant="h6" component="h2">
-                <b>{book.author}</b>
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        <Link to={`/show-book/${book._id}`}>
+          <Card className={classes.john}>
+            <h2 className={classes.title}>{book.title}</h2>
+            <CardActionArea className={classes.flex}>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                image={image}
+                title="Contemplative Reptile"
+                style={{ maxHeight: 540, maxWidth: 540 }}
+              />
+              <CardContent>
+                <Typography variant="h5" component="p" className={classes.txt}>
+                  {book.description}
+                </Typography>
+                <br></br>
+                <Typography gutterBottom variant="h6" component="h2">
+                  <b>{book.author}</b>
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </Link>
       </Grid>
     </div>
   );

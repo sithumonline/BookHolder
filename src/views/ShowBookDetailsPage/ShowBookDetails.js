@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -19,13 +20,13 @@ import styles from "assets/jss/material-kit-react/views/landingPage.js";
 // Sections for this page
 //import SectionAboutUs from "./Sections/AboutUsSection.js";
 //import SectionCreateBook from "./Sections/CreateBookSection";
-import SectionLogin from "../CreateBookPage/Sections/SectionLogin.js";
+import SectionShowBookDetails from "./Sections/ShowBookDetailsSection.js";
 
 const dashboardRoutes = [];
 
 const useStyles = makeStyles(styles);
 
-export default function CreateBookPage(props) {
+export default function ShowBookDetailsPage(props) {
   const classes = useStyles();
   const { ...rest } = props;
   return (
@@ -49,8 +50,11 @@ export default function CreateBookPage(props) {
         )}
       >
         <div className={classes.container}>
-          {/* <SectionCreateBook /> */}
-          <SectionLogin />
+          <Router>
+            <div>
+              <Route path="/show-book/:id" component={SectionShowBookDetails} />
+            </div>
+          </Router>
         </div>
       </div>
       <Footer />

@@ -51,7 +51,7 @@ export default class SectionShowBookList extends Component {
       bookList = books.map((book, k) => <BookCard book={book} key={k} />);
     }
 
-    const SampleFab = () => {
+    const Body = () => {
       const classesX = useStylesX();
       const classes = useStyles();
       return (
@@ -81,6 +81,6 @@ export default class SectionShowBookList extends Component {
       );
     };
 
-    return <SampleFab />;
+    return <Body />;
   }
 }
