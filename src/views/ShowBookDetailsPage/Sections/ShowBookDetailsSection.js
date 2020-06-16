@@ -9,9 +9,10 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 // core components
 import GridContainer from "../../../components/Grid/GridContainer.js";
 import GridItem from "../../../components/Grid/GridItem.js";
@@ -20,6 +21,13 @@ import styles from "../../../assets/jss/material-kit-react/views/componentsSecti
 
 const useStyles = makeStyles(styles);
 //const { id } = this.props.match.params;
+
+const useStylesX = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(2),
+    float: "center!important",
+  },
+}));
 
 export default class SectionShowBookDetails extends Component {
   constructor(props) {
@@ -57,6 +65,7 @@ export default class SectionShowBookDetails extends Component {
   render() {
     const Body = () => {
       const classes = useStyles();
+      const classesX = useStylesX();
       const book = this.state.book;
       function createData(X, Y) {
         return { X, Y };
@@ -77,19 +86,10 @@ export default class SectionShowBookDetails extends Component {
               <GridItem xs={12} sm={12} md={8}>
                 <TableContainer component={Paper}>
                   <Table className={classes.table} aria-label="simple table">
-                    <TableHead>
-                      {/* <TableRow>
-                        <TableCell>Dessert (100g serving)</TableCell>
-                        <TableCell align="right">Calories</TableCell>
-                        <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                        <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                        <TableCell align="right">Protein&nbsp;(g)</TableCell>
-                      </TableRow> */}
-                    </TableHead>
                     <TableBody>
                       {rows.map((row) => (
                         <TableRow key={row.name}>
-                          <TableCell align="right">{row.X}</TableCell>
+                          <TableCell align="left">{row.X}</TableCell>
                           <TableCell align="right">{row.Y}</TableCell>
                         </TableRow>
                       ))}
@@ -103,6 +103,8 @@ export default class SectionShowBookDetails extends Component {
                     variant="contained"
                     color="primary"
                     size="small"
+                    startIcon={<EditIcon />}
+                    className={classesX.button}
                   >
                     Edit Book
                   </Button>
@@ -111,6 +113,8 @@ export default class SectionShowBookDetails extends Component {
                   variant="contained"
                   color="secondary"
                   size="small"
+                  startIcon={<DeleteForeverIcon />}
+                  className={classesX.button}
                   onClick={this.onDeleteClick.bind(this, book._id)}
                 >
                   Delete Book
