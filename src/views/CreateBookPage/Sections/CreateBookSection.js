@@ -21,10 +21,10 @@ const useStylesX = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: "34ch",
     },
-    button: {
-      margin: theme.spacing(1),
-      float: "right!important",
-    },
+  },
+  button: {
+    margin: theme.spacing(1),
+    float: "right!important",
   },
 }));
 
