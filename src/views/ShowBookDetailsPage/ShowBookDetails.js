@@ -30,7 +30,7 @@ export default function ShowBookDetailsPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="KallathoniXY"
+        brand="Book Holder"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
