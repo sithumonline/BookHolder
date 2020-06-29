@@ -10,12 +10,14 @@ import "assets/scss/material-kit-react.scss?v=1.9.0";
 import MainPage from "views/MainPage/MainPage.js";
 import CreateBookPage from "views/CreateBookPage/CreateBookPage.js";
 import ShowBookDetailsPage from "views/ShowBookDetailsPage/ShowBookDetails.js";
+import Login from "./components/login.component.js";
+import Register from "./components/register.component.js";
 
 var hist = createBrowserHistory();
 
 const muiTheme = createMuiTheme({
   palette: {
-    type: "light" //"dark",
+    type: "light", //"dark",
   },
 });
 
@@ -23,6 +25,8 @@ ReactDOM.render(
   <Router history={hist}>
     <MuiThemeProvider theme={muiTheme}>
       <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
         <Route path="/show-book/" component={ShowBookDetailsPage} />
         <Route path="/create-book" component={CreateBookPage} />
         <Route path="/" component={MainPage} />
