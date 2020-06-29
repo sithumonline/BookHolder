@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8082/";
+const API_URL = "https://mern-01.now.sh/";
 
 class AuthService {
   login(email, password) {
