@@ -19,6 +19,7 @@ import BookIcon from "@material-ui/icons/Book";
 import GridContainer from "../../../components/Grid/GridContainer.js";
 import GridItem from "../../../components/Grid/GridItem.js";
 
+import authHeader from '../../../services/auth-header.js';
 import styles from "../../../assets/jss/material-kit-react/views/componentsSections/completedStyle.js";
 import image from "assets/img/1190053.jpg";
 
@@ -70,7 +71,7 @@ export default class SectionShowBookDetails extends Component {
 
   onDeleteClick(id) {
     axios
-      .delete("https://mern-01.now.sh/api/books/" + id)
+      .delete("https://mern-01.now.sh/api/books/" + id, { headers: authHeader() })
       .then((res) => {
         this.props.history.push("/");
       })

@@ -11,6 +11,7 @@ import CardFooter from "../../../components/Card/CardFooter.js";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import BookIcon from "@material-ui/icons/Book";
+import authHeader from '../../../services/auth-header.js';
 import styles from "../../../assets/jss/material-kit-react/views/componentsSections/loginStyle.js";
 
 const useStyles = makeStyles(styles);
@@ -80,7 +81,7 @@ export default class SectionUpdateBookInfo extends Component {
     axios
       .put(
         "https://mern-01.now.sh/api/books/" + this.props.match.params.id,
-        data
+        data, { headers: authHeader() }
       )
       .then((res) => {
         this.props.history.push("/show-book/" + this.props.match.params.id);
