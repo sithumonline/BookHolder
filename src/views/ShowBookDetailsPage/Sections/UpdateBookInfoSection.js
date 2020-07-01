@@ -11,22 +11,23 @@ import CardFooter from "../../../components/Card/CardFooter.js";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import BookIcon from "@material-ui/icons/Book";
+import authHeader from "../../../services/auth-header.js";
 import styles from "../../../assets/jss/material-kit-react/views/componentsSections/loginStyle.js";
 
 const useStyles = makeStyles(styles);
 
 const useStylesX = makeStyles((theme) => ({
-    root: {
-      "& .MuiTextField-root": {
-        margin: theme.spacing(1),
-        width: "34ch",
-      },
-      button: {
-        margin: theme.spacing(1),
-        float: "right!important",
-      },
+  root: {
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "34ch",
     },
-  }));
+    button: {
+      margin: theme.spacing(1),
+      float: "right!important",
+    },
+  },
+}));
 
 export default class SectionUpdateBookInfo extends Component {
   constructor(props) {
@@ -76,11 +77,12 @@ export default class SectionUpdateBookInfo extends Component {
       published_date: this.state.published_date,
       publisher: this.state.publisher,
     };
-
+    console.log("auHe :: ", authHeader());
     axios
       .put(
         "https://mern-01.now.sh/api/books/" + this.props.match.params.id,
-        data
+        data,
+        { headers: authHeader() }
       )
       .then((res) => {
         this.props.history.push("/show-book/" + this.props.match.params.id);
@@ -92,60 +94,60 @@ export default class SectionUpdateBookInfo extends Component {
 
   render() {
     const Body = () => {
-        const classes = useStyles();
-        const classesX = useStylesX();
-        return (
-          <div className={classes.section}>
-            <div className={classes.container}>
-              <GridContainer justify="center">
-                <GridItem xs={12} sm={12} md={4}>
-                  <Card className={classesX.root}>
-                    <CardHeader color="primary" className={classes.cardHeader}>
-                      <h4>Add Book</h4>
-                    </CardHeader>
-                    <p className={classes.divider}>Create new book</p>
-                    <CardBody>
-                      <TextField
-                        id="title"
-                        name="title"
-                        label="title"
-                        variant="outlined"
-                        value={this.state.title}
-                        onChange={this.onChange}
-                      />
-                      <TextField
-                        id="isbn"
-                        name="isbn"
-                        label="isbn"
-                        variant="outlined"
-                        value={this.state.isbn}
-                        onChange={this.onChange}
-                      />
-                      <TextField
-                        id="author"
-                        name="author"
-                        label="author"
-                        variant="outlined"
-                        value={this.state.author}
-                        onChange={this.onChange}
-                      />
-                      <TextField
-                        id="description"
-                        name="description"
-                        variant="outlined"
-                        label="description"
-                        value={this.state.description}
-                        onChange={this.onChange}
-                      />
-                      <TextField
-                        id="published_date"
-                        name="published_date"
-                        variant="outlined"
-                        label="published_date"
-                        value={this.state.published_date}
-                        onChange={this.onChange}
-                      />
-                      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      const classes = useStyles();
+      const classesX = useStylesX();
+      return (
+        <div className={classes.section}>
+          <div className={classes.container}>
+            <GridContainer justify="center">
+              <GridItem xs={12} sm={12} md={4}>
+                <Card className={classesX.root}>
+                  <CardHeader color="primary" className={classes.cardHeader}>
+                    <h4>Add Book</h4>
+                  </CardHeader>
+                  <p className={classes.divider}>Create new book</p>
+                  <CardBody>
+                    <TextField
+                      id="title"
+                      name="title"
+                      label="title"
+                      variant="outlined"
+                      value={this.state.title}
+                      onChange={this.onChange}
+                    />
+                    <TextField
+                      id="isbn"
+                      name="isbn"
+                      label="isbn"
+                      variant="outlined"
+                      value={this.state.isbn}
+                      onChange={this.onChange}
+                    />
+                    <TextField
+                      id="author"
+                      name="author"
+                      label="author"
+                      variant="outlined"
+                      value={this.state.author}
+                      onChange={this.onChange}
+                    />
+                    <TextField
+                      id="description"
+                      name="description"
+                      variant="outlined"
+                      label="description"
+                      value={this.state.description}
+                      onChange={this.onChange}
+                    />
+                    <TextField
+                      id="published_date"
+                      name="published_date"
+                      variant="outlined"
+                      label="published_date"
+                      value={this.state.published_date}
+                      onChange={this.onChange}
+                    />
+                    {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                           <KeyboardDatePicker
                             disableToolbar
                             variant="inline"
@@ -162,46 +164,46 @@ export default class SectionUpdateBookInfo extends Component {
                             }}
                           />
                         </MuiPickersUtilsProvider> */}
-                      <TextField
-                        id="publisher"
-                        name="publisher"
-                        variant="outlined"
-                        label="publisher"
-                        value={this.state.publisher}
-                        onChange={this.onChange}
-                      />
-                    </CardBody>
-                    <CardFooter className={classes.cardFooter}>
-                      <Button
-                        onClick={this.onSubmit}
-                        color="primary"
-                        size="large"
-                        type="submit"
-                      >
-                        Submit
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </GridItem>
-                <GridItem>
-                  <Link href="/">
+                    <TextField
+                      id="publisher"
+                      name="publisher"
+                      variant="outlined"
+                      label="publisher"
+                      value={this.state.publisher}
+                      onChange={this.onChange}
+                    />
+                  </CardBody>
+                  <CardFooter className={classes.cardFooter}>
                     <Button
-                      variant="contained"
-                      color="secondary"
-                      size="small"
-                      className={classesX.button}
-                      startIcon={<BookIcon />}
+                      onClick={this.onSubmit}
+                      color="primary"
+                      size="large"
+                      type="submit"
                     >
-                      Show BooK List
+                      Submit
                     </Button>
-                  </Link>
-                </GridItem>
-              </GridContainer>
-            </div>
+                  </CardFooter>
+                </Card>
+              </GridItem>
+              <GridItem>
+                <Link href="/">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="small"
+                    className={classesX.button}
+                    startIcon={<BookIcon />}
+                  >
+                    Show BooK List
+                  </Button>
+                </Link>
+              </GridItem>
+            </GridContainer>
           </div>
-        );
-      }; //
-  
-      return <Body />;
-    } //
-  }
+        </div>
+      );
+    }; //
+
+    return <Body />;
+  } //
+}
