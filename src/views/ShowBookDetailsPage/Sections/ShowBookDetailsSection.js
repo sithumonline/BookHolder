@@ -70,6 +70,7 @@ export default class SectionShowBookDetails extends Component {
   }
 
   onDeleteClick(id) {
+    console.log("auHe@De :: ",authHeader());    
     axios
       .delete("https://mern-01.now.sh/api/books/" + id, { headers: authHeader() })
       .then((res) => {

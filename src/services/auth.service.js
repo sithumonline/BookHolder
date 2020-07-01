@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = "https://mern-01.now.sh/";
+//const API_URL = "http://localhost:8082/";
 
 class AuthService {
   login(email, password) {
@@ -11,6 +12,7 @@ class AuthService {
       })
       .then(response => {
         if (response.data.accessToken) {
+          console.log("accTok", response.data.accessToken);
           localStorage.setItem("user", JSON.stringify(response.data));
         }
 		console.log("Login: " + response.data)
