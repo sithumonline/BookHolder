@@ -8,14 +8,17 @@ class AuthService {
     return axios
       .post(API_URL + "users/login", {
         email,
-        password
+        password,
       })
-      .then(response => {
+      .then((response) => {
         if (response.data.accessToken) {
-          console.log("accTok", response.data.accessToken);
           localStorage.setItem("user", JSON.stringify(response.data));
+          console.log("accTok: ", response.data.accessToken);
         }
-		console.log("Login: " + response.data)
+        console.log("Resp: ", response);
+        console.log("accTok2: ", response.data.accessToken);
+        console.log("accTok3: ", response.data.token);
+        console.log("Login: " + response.data);
         return response.data;
       });
   }
@@ -28,12 +31,12 @@ class AuthService {
     return axios.post(API_URL + "users", {
       name,
       email,
-      password
+      password,
     });
   }
 
   getCurrentUser() {
-    return JSON.parse(localStorage.getItem('user'));;
+    return JSON.parse(localStorage.getItem("user"));
   }
 }
 
