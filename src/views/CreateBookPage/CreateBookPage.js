@@ -13,7 +13,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import styles from "assets/jss/material-kit-react/views/landingPage.js";
 
 // Sections for this page
-import SectionCreateBook from "../CreateBookPage/Sections/CreateBookSection.js";
+import SectionCreateBook from "./Sections/CreateBookSection.js/index.js";
 
 const dashboardRoutes = [];
 

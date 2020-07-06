@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -28,30 +28,46 @@ const useStylesX = makeStyles((theme) => ({
   },
 }));
 
-export default class SectionCreateBook extends Component {
-  constructor() {
-    super();
-    this.title = React.createRef();
-    this.state = {
-      title: "",
-      isbn: "",
-      author: "",
-      description: "",
-      published_date: "",
-      publisher: "",
-    };
-  }
+export default function SectionCreateBook() {
+  const [form, input] = useState({
+    title: "",
+    isbn: "",
+    author: "",
+    description: "",
+    published_date: "",
+    publisher: "",
+  });
 
-  onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+  //   constructor() {
+  //     super();
+  //     //this.title = React.createRef();
+  //     this.state = {
+  //       title: "",
+  //       isbn: "",
+  //       author: "",
+  //       description: "",
+  //       published_date: "",
+  //       publisher: "",
+  //     };
+  //   }
+
+  const updateField = (e) => {
+    input({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  hello = () => {
-    const _title = this.title.current.value;
-    console.log("title : ", _title);
-  };
+  //   onChange = (e) => {
+  //     this.setState({ [e.target.name]: e.target.value });
+  //   };
 
-  onSubmit = (e) => {
+  //   hello = () => {
+  //     const _title = this.title.current.value;
+  //     console.log("title : ", _title);
+  //   };
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const data = {
@@ -82,62 +98,72 @@ export default class SectionCreateBook extends Component {
         console.log("Error in CreateBook!");
       });
   };
-  render() {
-    const Body = () => {
-      const classes = useStyles();
-      const classesX = useStylesX();
-      return (
-        <div className={classes.section}>
-          <div className={classes.container}>
-            <GridContainer justify="center">
-              <GridItem xs={12} sm={12} md={4}>
-                <Card className={classesX.root}>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                    <h4>Add Book</h4>
-                  </CardHeader>
-                  <p className={classes.divider}>Create new book</p>
-                  <CardBody>
-                    <TextField
-                      id="title"
-                      name="title"
-                      label="title"
-                      variant="outlined"
-                      value={this.state.title}
-                      onChange={this.onChange}
-                    />
-                    <TextField
-                      id="isbn"
-                      name="isbn"
-                      label="isbn"
-                      variant="outlined"
-                      value={this.state.isbn}
-                      onChange={this.onChange}
-                    />
-                    <TextField
-                      id="author"
-                      name="author"
-                      label="author"
-                      variant="outlined"
-                      value={this.state.author}
-                      onChange={this.onChange}
-                    />
-                    <TextField
-                      id="description"
-                      name="description"
-                      variant="outlined"
-                      label="description"
-                      value={this.state.description}
-                      onChange={this.onChange}
-                    />
-                    <TextField
-                      id="published_date"
-                      name="published_date"
-                      variant="outlined"
-                      label="published_date"
-                      value={this.state.published_date}
-                      onChange={this.onChange}
-                    />
-                    {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+  //render() {
+  // const Body = () => {
+  const classes = useStyles();
+  const classesX = useStylesX();
+  return (
+    <div className={classes.section}>
+      <div className={classes.container}>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={12} md={4}>
+            <Card className={classesX.root}>
+              <CardHeader color="primary" className={classes.cardHeader}>
+                <h4>Add Book</h4>
+              </CardHeader>
+              <p className={classes.divider}>Create new book</p>
+              <CardBody>
+                <TextField
+                  id="title"
+                  name="title"
+                  label="title"
+                  variant="outlined"
+                  //value={this.state.title}
+                  value={form.title}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+                <TextField
+                  id="isbn"
+                  name="isbn"
+                  label="isbn"
+                  variant="outlined"
+                  //value={this.state.isbn}
+                  value={form.isbn}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+                <TextField
+                  id="author"
+                  name="author"
+                  label="author"
+                  variant="outlined"
+                  //value={this.state.author}
+                  value={form.author}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+                <TextField
+                  id="description"
+                  name="description"
+                  variant="outlined"
+                  label="description"
+                  //value={this.state.description}
+                  value={form.description}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+                <TextField
+                  id="published_date"
+                  name="published_date"
+                  variant="outlined"
+                  label="published_date"
+                  //value={this.state.published_date}
+                  value={form.published_date}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+                {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                           disableToolbar
                           variant="inline"
@@ -154,46 +180,49 @@ export default class SectionCreateBook extends Component {
                           }}
                         />
                       </MuiPickersUtilsProvider> */}
-                    <TextField
-                      id="publisher"
-                      name="publisher"
-                      variant="outlined"
-                      label="publisher"
-                      value={this.state.publisher}
-                      onChange={this.onChange}
-                    />
-                  </CardBody>
-                  <CardFooter className={classes.cardFooter}>
-                    <Button
-                      onClick={this.onSubmit}
-                      color="primary"
-                      size="large"
-                      type="submit"
-                    >
-                      Submit
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </GridItem>
-              <GridItem>
-                <Link href="/">
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    size="small"
-                    className={classesX.button}
-                    startIcon={<BookIcon />}
-                  >
-                    Show BooK List
-                  </Button>
-                </Link>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </div>
-      );
-    }; //
+                <TextField
+                  id="publisher"
+                  name="publisher"
+                  variant="outlined"
+                  label="publisher"
+                  //value={this.state.publisher}
+                  value={form.publisher}
+                  //onChange={this.onChange}
+                  onChange={updateField}
+                />
+              </CardBody>
+              <CardFooter className={classes.cardFooter}>
+                <Button
+                  //onClick={this.onSubmit}
+                  onClick={onSubmit}
+                  color="primary"
+                  size="large"
+                  type="submit"
+                >
+                  Submit
+                </Button>
+              </CardFooter>
+            </Card>
+          </GridItem>
+          <GridItem>
+            <Link href="/">
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                className={classesX.button}
+                startIcon={<BookIcon />}
+              >
+                Show BooK List
+              </Button>
+            </Link>
+          </GridItem>
+        </GridContainer>
+      </div>
+    </div>
+  );
+  // }; //
 
-    return <Body />;
-  } //
+  // return <Body />;
+  //} //
 }
