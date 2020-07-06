@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -29,7 +29,7 @@ const useStylesX = makeStyles((theme) => ({
 }));
 
 export default function SectionCreateBook() {
-  const [form, input] = useState({
+  const [form, setValue] = useState({
     title: "",
     isbn: "",
     author: "",
@@ -52,7 +52,7 @@ export default function SectionCreateBook() {
   //   }
 
   const updateField = (e) => {
-    input({
+    setValue({
       ...form,
       [e.target.name]: e.target.value,
     });
@@ -71,12 +71,12 @@ export default function SectionCreateBook() {
     e.preventDefault();
 
     const data = {
-      title: this.state.title,
-      isbn: this.state.isbn,
-      author: this.state.author,
-      description: this.state.description,
-      published_date: this.state.published_date,
-      publisher: this.state.publisher,
+      title: form.title,
+      isbn: form.isbn,
+      author: form.author,
+      description: form.description,
+      published_date: form.published_date,
+      publisher: form.publisher,
     };
     console.log(data);
     console.log("dataSet :: ", data);
